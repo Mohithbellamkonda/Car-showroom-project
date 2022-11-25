@@ -1,0 +1,73 @@
+﻿@model Testing_Login.Models.Cart
+
+@{
+    ViewData["Title"] = "Wantobuy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h4>Time being prices may vary according to the seller wish...</h4>
+<h3>Please verify the prices before buying </h3>
+<hr />
+<div>
+    <h4>Buy</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.car_Company)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.car_Company)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.car_model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.car_model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.car_condition)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.car_condition)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Contact_number)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Contact_number)
+        </dd>
+    </dl>
+
+
+    <form method="post" asp-action="Wanttobuy">
+
+        <div class="form-group">
+            <input type="hidden" asp-for="Id" />
+
+
+            <input type="submit" value="Buy" class="btn btn-primary" />
+        </div>
+    </form>
+</div>
+
+</br>
+</br>
+</br>
+<div>
+
+    <a asp-action="Index" class="btn btn-primary"  style="background-color:green">Back to Cart</a>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

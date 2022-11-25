@@ -1,0 +1,67 @@
+﻿@model Testing_Login.Models.Buy
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h4>Add to cart</h4>
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.car_Company)  |
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.car_Company)  |
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.car_model)  |
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.car_model)  |
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.price)  |
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.price)  |
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.car_condition)  |
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.car_condition)  |
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Contact_number)  |
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Contact_number)  |
+        </dd>
+    </dl>
+
+
+    <form method="post" asp-action="Addtocart">
+
+        <div class="form-group">
+            <input type="hidden" asp-for="Id"/>
+             <a asp-action="Index" class="btn btn-primary" style="background-color:green" inline="true">Back to Shop </a>
+
+            <input type="submit" value="Add to Cart" class="btn btn-primary" inline="true"/>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

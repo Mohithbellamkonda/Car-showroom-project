@@ -1,0 +1,80 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Testing_Login.Areas.Identity.Data
+
+@inject SignInManager<Testing_LoginUser> SignInManager
+@inject UserManager<Testing_LoginUser> UserManager
+@model IEnumerable<Testing_Login.Models.Cart>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@if(Model.Count()>0){
+<h1>Your Cart</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.car_Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.car_model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.car_condition)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact_number)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+
+    string email = item.email;
+    @if (email == @UserManager.GetUserName(User)){
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.car_Company)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.car_model)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.car_condition)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Contact_number)
+                    </td>
+                 
+                    <td>
+                
+                        <a  asp-action="Wanttobuy" asp-route-id="@item.Id" class="btn btn-primary">Buy</a> 
+                        <a asp-action="Delete" asp-route-id="@item.Id"   class="btn btn-primary"  style="background-color:red">Delete</a>
+    
+                    </td>
+               </tr>
+    }
+
+        
+}
+    </tbody>
+</table>
+}
+else{
+
+    <h1>Your cart is empty</h1>
+    <a asp-action="Index" asp-Controller ="Buys">Go to Shop</a>
+}

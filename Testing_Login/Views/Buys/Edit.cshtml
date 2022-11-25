@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Testing_Login.Areas.Identity.Data
+
+@inject SignInManager<Testing_LoginUser> SignInManager
+@inject UserManager<Testing_LoginUser> UserManager
+
+@model Testing_Login.Models.Buy
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="car_Company"/>
+            <input type="hidden" asp-for="car_model"/>
+
+            <div class="form-group">
+                <label asp-for="price" class="control-label">Price</label>
+                <input asp-for="price" class="form-control" placeholder="Set the Price of the  Car" class="form-control" min="0" max="10000000" />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="car_condition" class="control-label">Car Condition</label>
+                <select name="car_condition" asp-for="car_condition" class="form-control">
+                    <option value="">Select one from the options</option>
+                    <option value="Exellent">Exellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Just working fine">Just working fine</option>
+                    <option value="Damaged">Damaged</option>
+                </select>
+                <span asp-validation-for="car_condition" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact_number" class="control-label">Contact Number</label>
+                <input type="number" placeholder="Enter your 10 digit phone number" asp-for="Contact_number" maxlength="10" minlength="10" class="form-control" />
+                <span asp-validation-for="Contact_number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="email" />
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+</br>
+<div>
+    <a asp-action="Intheauction" class="btn btn-primary" style="background-color:green">Go Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

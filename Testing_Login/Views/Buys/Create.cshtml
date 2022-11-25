@@ -1,0 +1,92 @@
+﻿
+@model Testing_Login.Models.Buy
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Find the right customer....</h1>
+
+<h4>Sell</h4>
+<hr />
+<br />
+<img align="middle" src="/77.jpg" width="600px" />
+<style>
+    
+    img {
+        display: -webkit-box;
+        margin: auto;
+        margin-bottom: 0;
+    }
+</style>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="car_Company" class="control-label"> Car Company </label>
+                <input asp-for="car_Company" class="form-control" />
+                <span asp-validation-for="car_Company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="car_model" class="control-label">Car Model</label>
+                <input asp-for="car_model" class="form-control"  />
+                <span asp-validation-for="car_model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="price" class="control-label">Car Price </label>
+                <input asp-for="price" class="form-control" placeholder="Set the Price of the  Car" class="form-control" min="0" max="10000000" />
+                <span asp-validation-for="price"  class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="car_condition" class="control-label">Car Condition</label>
+                <select name="car_condition" asp-for="car_condition" class="form-control">
+                    <option value="">Select one from the options</option>
+                    <option value="Exellent">Exellent</option>
+                    <option value="Good">Good</option>
+                    <option value="Just working fine">Just working fine</option>
+                    <option value="Damaged">Damaged</option>
+                </select>
+                <span asp-validation-for="car_condition" class="text-danger"></span>
+            </div>
+
+
+            
+          @*  <div>
+                <div class="form-group">
+                    <ul>
+                        
+                        
+                        <li> <input type="number" name="Contact_number" value="Submit" onclick="stringlength(document.form.name,10,10)" /></li>
+                        
+                
+                    </ul>
+                </div>
+            </div> *@
+
+            
+
+           
+            <div class="form-group">
+                <label asp-for="Contact_number" class="control-label">Contact Number</label>
+                <input type="number" placeholder="Enter your 10 digit phone number"  asp-for="Contact_number" maxlength="10" minlength="10" class="form-control" />
+                <span asp-validation-for="Contact_number" class="text-danger"></span>
+                
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br/>
+
+<div>
+     <a asp-action="Index" class="btn btn-primary" style="background-color:green" inline="true">Back to Shop </a>
+
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
